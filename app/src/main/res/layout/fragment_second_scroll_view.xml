@@ -1,0 +1,41 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/horizontal_divider"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:showDividers="middle">
+
+        <include layout="@layout/header_placeholder" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="腾讯科技讯 2月5日，最新报告显示，三星最新的顶级配置的旗舰式手机Galaxy S8的售价可能会高达1000美元，这也会让该款手机成为全球史上最昂贵的主流智能手机之一。这款Galaxy S8手机的售价如果果真如此最贵，那么定会引发业界的更大震惊。
+
+据移动通信领域的权威网站GSM Arena援引泄密人士的消息称，内存达128GB的高端Galaxy S8智能手机在亚洲市场的售价可能高达943美元，而64GB版Galaxy S8的售价则将约为885美元。这些售价可能会让当前市场上销售的32GB版的Galaxy S7 Edge相形见绌，Galaxy S7 Edge手机推出之初在各个市场上的售价从750美元至792美元不等。
+
+毫无疑问，Galaxy S8智能手机的标准存储容量定为64GB，这肯定会成为深受用户欢迎的一大进步，但是目前还不清楚到底会有多少消费者愿意为额外增加的存储空间付费。相比较而言，256GB版的iPhone 7 Plus智能手机售价为969美元，而128GB版的iPhone 7 Plus售价则为869美元。
+
+上述泄露高端Galaxy S8存储量和价格信息的这位知情人士还透露，Galaxy S8可能会配置6GB的RAM，而不是4GB的RAM，与高通的新版骁龙835芯片搭载起来，将会提供更加快速的性能，这也与近期业界听到的Galaxy S8相关其它最新传闻不谋而合。
+
+初步来看，这款高端的Galaxy S8智能手机不仅配置了高端的规格，而且三星还在升级这款手机的摄像头，通过提供Dual ADC功能，Galaxy S8智能手机的摄像头性能也将大大超过S7和S7 Edge。按照GSM Arena网站的说法，这“在理论上应当允许色深功能”。
+
+其它的传闻还显示，Galaxy S8智能手将采用边到边的超窄边框显示屏，将把Home按键集成到手机显示屏幕之，而指纹传感器则安放在机身后部，另外还配置了一个名为“Bixby”的语音助理，与苹果的Siri抗衡。
+
+当然，Galaxy S8手机中最酷的功能可能是一个名为“DeX”的全新桌面模式，该功能可以让用户把Galaxy S8手机当作一个完整的Android PC使用，而且还支持鼠标和键盘等配件。
+
+不过，Galaxy S8智能手机在美国市场的售价可能要低一些，另外，目前还不能肯定三星会提供128GB版Galaxy S8。无论如何，用户如果向往这样的Galaxy S8，那现在可能就要开始存钱了。（编译/金全）"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
