@@ -1,12 +1,12 @@
 package com.lany.library;
 
+import android.support.v4.util.SparseArrayCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AbsListView;
-
 
 public abstract class BaseFlexActivity extends AppCompatActivity implements OnScrollTabListener {
     final String TAG = getClass().getSimpleName();
@@ -46,8 +46,40 @@ public abstract class BaseFlexActivity extends AppCompatActivity implements OnSc
         return -top + firstVisiblePosition * child.getHeight() + headerHeight;
     }
 
-    protected FlexViewPagerChangeListener getViewPagerChangeListener() {
-        return new FlexViewPagerChangeListener(mViewPager, mAdapter, mHeader);
+    protected void addOnPageChangeListener() {
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                int currentItem = mViewPager.getCurrentItem();
+                if (positionOffsetPixels > 0) {
+                    SparseArrayCompat<OnScrollTabListener> scrollTabHolders = mAdapter.getScrollTabHolders();
+                    OnScrollTabListener fragmentContent;
+                    if (position < currentItem) {
+                        // Revealed the previous page
+                        fragmentContent = scrollTabHolders.valueAt(position);
+                    } else {
+                        // Revealed the next page
+                        fragmentContent = scrollTabHolders.valueAt(position + 1);
+                    }
+                    fragmentContent.adjustScroll((int) (mHeader.getHeight() + mHeader.getTranslationY()), mHeader.getHeight());
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                SparseArrayCompat<OnScrollTabListener> scrollTabHolders = mAdapter.getScrollTabHolders();
+                if (scrollTabHolders == null || scrollTabHolders.size() != mNumFragments) {
+                    return;
+                }
+                OnScrollTabListener currentHolder = scrollTabHolders.valueAt(position);
+                currentHolder.adjustScroll((int) (mHeader.getHeight() + mHeader.getTranslationY()), mHeader.getHeight());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
